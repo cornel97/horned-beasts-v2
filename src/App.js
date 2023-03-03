@@ -9,17 +9,17 @@ import SelectedBeast from "./Components/SelectedBeast";
 function App() {
   const [modalShow, setModalShow] = useState(false);
   const [theBeast, setTheBeast] = useState({});
+  const [hornsFilter, setHornsFilter] = useState("");
 
   function handleModal(beast) {
     setModalShow(!modalShow);
     setTheBeast(beast);
-    console.log(beast);
   }
 
   return (
     <div className="App">
-      <Header />
-      <Main data={data} handleModal={handleModal} />
+      <Header hornsFilter={hornsFilter} setHornsFilter={setHornsFilter} />
+      <Main data={data} handleModal={handleModal} hornsFilter={hornsFilter} />
       {modalShow && (
         <SelectedBeast theBeast={theBeast} handleModal={handleModal} />
       )}

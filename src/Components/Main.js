@@ -1,10 +1,14 @@
 import React from "react";
 import HornedBeast from "./HornedBeast";
 
-export default function Main({ data, handleModal }) {
+export default function Main({ data, handleModal, hornsFilter }) {
+  const filteredData = data.filter(
+    (beast) => !hornsFilter || beast.horns === parseInt(hornsFilter)
+  );
+
   return (
     <main>
-      {data.map((beast) => {
+      {filteredData.map((beast) => {
         return (
           <HornedBeast
             title={beast.title}
